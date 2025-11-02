@@ -15,11 +15,14 @@ public class IntroActivity extends AppCompatActivity {
         // Ambil layout utama
         View rootLayout = findViewById(android.R.id.content);
 
+        String email = getIntent().getStringExtra("USER_EMAIL");
+
         // Kalau layar di-tap di mana saja → pindah ke NameActivity
         rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(IntroActivity.this, NameActivity.class);
+                intent.putExtra("USER_EMAIL", email);
                 startActivity(intent);
             }
         });

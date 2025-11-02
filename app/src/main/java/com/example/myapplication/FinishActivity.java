@@ -2,8 +2,9 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.Toast;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button; // <-- 1. IMPORT Button
 
 public class FinishActivity extends AppCompatActivity {
 
@@ -14,10 +15,17 @@ public class FinishActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish);
 
+        String email = getIntent().getStringExtra("USER_EMAIL");
+
         btnFinish = findViewById(R.id.btnFinish);
 
-        btnFinish.setOnClickListener(v ->
-                Toast.makeText(this, "Welcome to Equalife!", Toast.LENGTH_SHORT).show()
-        );
+        btnFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinishActivity.this, HomeActivity.class);
+                intent.putExtra("USER_EMAIL", email);
+                startActivity(intent);
+            }
+        });
     }
 }

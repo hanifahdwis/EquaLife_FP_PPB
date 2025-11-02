@@ -28,6 +28,10 @@ public class HeightActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please enter your height", Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(HeightActivity.this, WeightActivity.class);
+                intent.putExtra("USER_EMAIL", getIntent().getStringExtra("USER_EMAIL"));
+                intent.putExtra("USER_NAME", getIntent().getStringExtra("USER_NAME"));
+                intent.putExtra("USER_AGE_RANGE", getIntent().getStringExtra("USER_AGE_RANGE"));
+                intent.putExtra("USER_HEIGHT", heightText);
                 startActivity(intent);
             }
         });

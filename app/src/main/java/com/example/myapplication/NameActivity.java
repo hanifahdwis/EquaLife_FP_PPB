@@ -18,11 +18,15 @@ public class NameActivity extends AppCompatActivity {
 
         etName = findViewById(R.id.etName);
         btnNext = findViewById(R.id.btnNext);
+        String email = getIntent().getStringExtra("USER_EMAIL");
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = etName.getText().toString();
                 Intent intent = new Intent(NameActivity.this, AgeActivity.class);
+                intent.putExtra("USER_NAME", name);
+                intent.putExtra("USER_EMAIL", email);
                 startActivity(intent);
             }
         });

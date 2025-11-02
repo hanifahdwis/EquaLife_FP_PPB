@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
             boolean valid = db.checkUser(email, password);
             if (valid) {
                 Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, IntroActivity.class));
-                finish();
+                Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+                intent.putExtra("USER_EMAIL", email);
+                startActivity(intent);
             } else {
                 Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
             }

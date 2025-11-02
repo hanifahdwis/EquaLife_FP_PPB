@@ -22,7 +22,14 @@ public class AgeActivity extends AppCompatActivity {
         View.OnClickListener goNext = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AgeActivity.this, HeightActivity.class));
+                String email = getIntent().getStringExtra("USER_EMAIL");
+                String name = getIntent().getStringExtra("USER_NAME");
+                String ageRange = ((Button) v).getText().toString();
+                Intent intent = new Intent(AgeActivity.this, HeightActivity.class);
+                intent.putExtra("USER_NAME", name);
+                intent.putExtra("USER_AGE_RANGE", ageRange);
+                intent.putExtra("USER_EMAIL", email);
+                startActivity(intent);
             }
         };
 
